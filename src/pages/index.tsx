@@ -7,10 +7,10 @@ import { stripe } from '../services/stripe';
 interface HomeProps {
   product: {
     priceId: string;
-    amount: number;
+    amount: string;
   }
 }
-export default function Home({product}: HomeProps) {
+export default function Home({ product }: HomeProps) {
   return (
     <>
       <Head>
@@ -23,7 +23,7 @@ export default function Home({product}: HomeProps) {
           <p>Get acess to all the publics <br />
             <span>for {product.amount} month</span>
           </p>
-          <SubscribeButton priceId={product.priceId}/>
+          <SubscribeButton />
         </section>
         <img src="/avatar.svg" alt="girls coding" />
       </main>
@@ -39,7 +39,7 @@ export const getStaticProps: GetStaticProps = async () => {
       style: 'currency',
       currency: 'USD',
     }).format(price.unit_amount / 100), // sempre em centavos
-    }
+  }
   return {
     props: {
       product,

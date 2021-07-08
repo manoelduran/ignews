@@ -1,6 +1,6 @@
 import { GetStaticPaths, GetStaticProps } from "next";
 import { useSession } from "next-auth/client";
-import { useRouter } from "next/dist/client/router";
+import { useRouter } from "next/router";
 import Head from "next/head";
 import Link from "next/link";
 import { RichText } from "prismic-dom";
@@ -52,7 +52,7 @@ export default function PostPreview({ post }: PostPreviewProps) {
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
     paths: [],
-    fallback: 'blocking'
+    fallback: true
   }
 }
 
